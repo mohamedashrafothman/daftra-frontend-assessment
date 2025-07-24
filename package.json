@@ -6,7 +6,7 @@
 		"node": ">=18.0.0",
 		"npm": ">=10.0.0"
 	},
-	"description": "",
+	"description": "A responsive Pokemon browser App using React/Next.js and Typescript that fetches Pokemon data with Ajax from the external Pokedex API and displays it.",
 	"keywords": [],
 	"license": "ISC",
 	"author": "Mohamed Ashraf Othman - mohamedashrafothman@gmail.com",
@@ -35,14 +35,25 @@
 	},
 	"homepage": "https://github.com/mohamedashrafothman/daftra-frontend-assessment#readme",
 	"dependencies": {
+		"@tanstack/react-query-devtools": "5.62.8",
+		"@tanstack/react-query": "5.62.7",
+		"await-to-js": "3.0.0",
+		"axios": "1.7.9",
+		"bootstrap": "5.3.3",
+		"classnames": "2.5.1",
+		"http-status": "2.1.0",
 		"next": "14.2.20",
-		"react": "18",
-		"react-dom": "18"
+		"nextjs-toploader": "3.7.15",
+		"react-dom": "18",
+		"react-toastify": "11.0.5",
+		"react": "18"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "19.6.0",
 		"@commitlint/config-conventional": "19.6.0",
 		"@eslint/eslintrc": "3",
+		"@tanstack/eslint-plugin-query": "5.62.1",
+		"@types/bootstrap": "5.2.10",
 		"@types/node": "20",
 		"@types/react": "18",
 		"@types/react-dom": "18",
@@ -55,6 +66,7 @@
 		"husky": "8.0.1",
 		"lint-staged": "15.2.11",
 		"prettier": "3.4.2",
+		"sass": "1.83.0",
 		"semver": "7.6.3",
 		"standard-version": "9.5.0",
 		"typescript": "5"
