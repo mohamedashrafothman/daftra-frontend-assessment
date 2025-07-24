@@ -1,3 +1,5 @@
-const index = () => <div>pokemon listing page</div>;
+import { redirect } from "next/navigation";
 
-export default index;
+const page = () => redirect("/pokemon");
+
+export default page;
