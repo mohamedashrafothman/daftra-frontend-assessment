@@ -1,24 +1,67 @@
 {
-  "name": "daftra-frontend-assessment",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.20"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.20"
-  }
+	"name": "pokedex",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=10.0.0"
+	},
+	"description": "",
+	"keywords": [],
+	"license": "ISC",
+	"author": "Mohamed Ashraf Othman - mohamedashrafothman@gmail.com",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"prestart": "npm run build",
+		"prepare": "husky install",
+		"prettify": "prettier --write --ignore-path .gitignore",
+		"docker-compose-up": "docker compose up --watch",
+		"docker-compose-down": "docker compose down -v --rmi all",
+		"get-next-release-version": "node ./get-next-release-version.js",
+		"release": "standard-version",
+		"release:minor": "standard-version --release-as minor",
+		"release:patch": "standard-version --release-as patch",
+		"release:major": "standard-version --release-as major"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mohamedashrafothman/daftra-frontend-assessment.git"
+	},
+	"bugs": {
+		"url": "https://github.com/mohamedashrafothman/daftra-frontend-assessment/issues"
+	},
+	"homepage": "https://github.com/mohamedashrafothman/daftra-frontend-assessment#readme",
+	"dependencies": {
+		"next": "14.2.20",
+		"react": "18",
+		"react-dom": "18"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "19.6.0",
+		"@commitlint/config-conventional": "19.6.0",
+		"@eslint/eslintrc": "3",
+		"@types/node": "20",
+		"@types/react": "18",
+		"@types/react-dom": "18",
+		"conventional-recommended-bump": "10.0.0",
+		"eslint": "8.57.1",
+		"eslint-config-next": "14.2.20",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-prettier": "5.2.1",
+		"eslint-plugin-react": "7.37.3",
+		"husky": "8.0.1",
+		"lint-staged": "15.2.11",
+		"prettier": "3.4.2",
+		"semver": "7.6.3",
+		"standard-version": "9.5.0",
+		"typescript": "5"
+	},
+	"standard-version": {
+		"skip": {
+			"tag": true
+		}
+	}
 }
