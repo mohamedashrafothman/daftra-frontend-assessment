@@ -7,7 +7,7 @@
 
 // scss-docs-start gray-color-variables
 $white: #fff !default;
-$gray-100: #f8f9fa !default;
+$gray-100: #fafafc !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
@@ -38,8 +38,8 @@ $grays: (
 // scss-docs-start color-variables
 $blue: #0d6efd !default;
 $indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #d63384 !default;
+$purple: #b360f8 !default;
+$pink: #e954a7 !default;
 $red: #dc3545 !default;
 $orange: #fd7e14 !default;
 $yellow: #ffc107 !default;
@@ -457,10 +457,10 @@ $body-emphasis-color: $black !default;
 // Style anchor elements.
 
 $link-color: $primary !default;
-$link-decoration: underline !default;
+$link-decoration: null !default;
 $link-shade-percentage: 20% !default;
 $link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
-$link-hover-decoration: null !default;
+$link-hover-decoration: underline !default;
 
 $stretched-link-pseudo-element: after !default;
 $stretched-link-z-index: 1 !default;
@@ -595,6 +595,7 @@ $aspect-ratios: (
 	"4x3": calc(3 / 4 * 100%),
 	"16x9": calc(9 / 16 * 100%),
 	"21x9": calc(9 / 21 * 100%),
+	"41x29": calc(29 / 41 * 100%),
 ) !default;
 // scss-docs-end aspect-ratios
 // stylelint-enable function-disallowed-list
@@ -1196,7 +1197,7 @@ $zindex-levels: (
 // Navs
 
 // scss-docs-start nav-variables
-$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-y: 0.35rem !default;
 $nav-link-padding-x: 1rem !default;
 $nav-link-font-size: null !default;
 $nav-link-font-weight: null !default;
@@ -1381,8 +1382,8 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius) !default;
 // Placeholders
 
 // scss-docs-start placeholders
-$placeholder-opacity-max: 0.5 !default;
-$placeholder-opacity-min: 0.2 !default;
+$placeholder-opacity-max: 0.3 !default;
+$placeholder-opacity-min: 0.1 !default;
 // scss-docs-end placeholders
 
 // Cards
@@ -1398,9 +1399,9 @@ $card-border-color: var(--#{$prefix}border-color-translucent) !default;
 $card-border-radius: var(--#{$prefix}border-radius) !default;
 $card-box-shadow: null !default;
 $card-inner-border-radius: subtract($card-border-radius, $card-border-width) !default;
-$card-cap-padding-y: $card-spacer-y * 0.5 !default;
+$card-cap-padding-y: $card-spacer-y !default;
 $card-cap-padding-x: $card-spacer-x !default;
-$card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), 0.03) !default;
+$card-cap-bg: transparent !default;
 $card-cap-color: null !default;
 $card-height: null !default;
 $card-color: null !default;
@@ -1539,12 +1540,12 @@ $toast-header-border-color: $toast-border-color !default;
 // Badges
 
 // scss-docs-start badge-variables
-$badge-font-size: 0.75em !default;
-$badge-font-weight: $font-weight-bold !default;
+$badge-font-size: 0.85em !default;
+$badge-font-weight: $font-weight-normal !default;
 $badge-color: $white !default;
 $badge-padding-y: 0.35em !default;
-$badge-padding-x: 0.65em !default;
-$badge-border-radius: var(--#{$prefix}border-radius) !default;
+$badge-padding-x: 1em !default;
+$badge-border-radius: var(--#{$prefix}border-radius-pill) !default;
 // scss-docs-end badge-variables
 
 // Modals
@@ -1618,10 +1619,10 @@ $alert-color-scale: 40% !default; // Deprecated in v5.2.0, to be removed in v6
 // Progress bars
 
 // scss-docs-start progress-variables
-$progress-height: 1rem !default;
-$progress-font-size: $font-size-base * 0.75 !default;
+$progress-height: 0.65rem !default;
+$progress-font-size: $font-size-base * 0.85 !default;
 $progress-bg: var(--#{$prefix}secondary-bg) !default;
-$progress-border-radius: var(--#{$prefix}border-radius) !default;
+$progress-border-radius: var(--#{$prefix}border-radius-pill) !default;
 $progress-box-shadow: var(--#{$prefix}box-shadow-inset) !default;
 $progress-bar-color: $white !default;
 $progress-bar-bg: $primary !default;

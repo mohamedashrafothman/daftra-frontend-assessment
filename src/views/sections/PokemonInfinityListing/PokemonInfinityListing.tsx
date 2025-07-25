@@ -68,7 +68,9 @@ const PokemonInfinityListing = () => {
 									</span>
 								)}
 								<small>
-									{isFetchingNextPage ? "Loading" : "Load more Pokémon"}
+									<strong>
+										{isFetchingNextPage ? "Loading" : "Load more Pokémon"}
+									</strong>
 								</small>
 							</button>
 						</div>

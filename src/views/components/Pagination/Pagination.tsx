@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import { ComponentPropsWithoutRef } from "react";
+import { formatNumberToNDigits } from "utils/helpers";
 import PaginationLink from "./PaginationLink";
 import PaginationList from "./PaginationList";
 import PaginationListItem from "./PaginationListItem";
@@ -55,7 +56,7 @@ const Pagination = ({
 					key={i}>
 					{i === currentPage ? (
 						<PaginationLink as="span">
-							{i}
+							{formatNumberToNDigits(i)}
 							<span className="visually-hidden">(current)</span>
 						</PaginationLink>
 					) : (
@@ -64,8 +65,8 @@ const Pagination = ({
 							type="button"
 							className="h-100 icon-link icon-link-hover icon-link-hover-reversed"
 							onClick={() => onClick?.(i)}
-							title={`Page ${i}`}>
-							{i}
+							title={`Page ${formatNumberToNDigits(i)}`}>
+							{formatNumberToNDigits(i)}
 						</PaginationLink>
 					)}
 				</PaginationListItem>
