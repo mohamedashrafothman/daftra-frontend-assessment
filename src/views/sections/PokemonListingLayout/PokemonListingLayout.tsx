@@ -1,6 +1,7 @@
 "use client";
 
 import { ComponentPropsWithoutRef } from "react";
+import vars from "utils/vars";
 import Nav from "views/components/Nav";
 
 type Props = { message?: string | undefined } & ComponentPropsWithoutRef<"section">;
@@ -14,7 +15,7 @@ const PokemonListingLayout = ({ children, message = "Discover and explore Poké
 						<svg className="bi text-yellow w-24px h-24px" width="16" height="16">
 							<use href="#icon-lightning" />
 						</svg>
-						Pokédex
+						{vars.app.name}
 					</h1>
 					{message && <p className="lead m-0">{message}</p>}
 				</div>
