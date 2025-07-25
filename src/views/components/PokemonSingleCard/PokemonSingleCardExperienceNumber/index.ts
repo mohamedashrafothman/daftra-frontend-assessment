@@ -1,0 +1,2 @@
+import PokemonSingleCardExperienceNumber from "./PokemonSingleCardExperienceNumber";
+export default PokemonSingleCardExperienceNumber;

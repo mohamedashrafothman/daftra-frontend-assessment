@@ -1,0 +1,7 @@
+:root {
+	@each $breakpoint, $value in $grid-breakpoints {
+		--#{$prefix}#{$breakpoint}: #{$value};
+	}
+
+	--prefix: #{$prefix};
+}

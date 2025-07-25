@@ -1,0 +1,2 @@
+import PokemonSingleCardAbilityListItem from "./PokemonSingleCardAbilityListItem";
+export default PokemonSingleCardAbilityListItem;

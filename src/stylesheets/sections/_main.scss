@@ -1,0 +1,15 @@
+main {
+	flex-grow: 1;
+	scroll-behavior: smooth;
+	background-attachment: fixed;
+
+	&.main-listing {
+		background-image: linear-gradient(135deg, #f0fef5, #d7fae9);
+	}
+	&.main-listing-infinity {
+		background-image: linear-gradient(135deg, #f2f7ff, #e5eafe);
+	}
+	&.main-single {
+		background-image: linear-gradient(135deg, #fbf5ff, #fbe8f6);
+	}
+}
