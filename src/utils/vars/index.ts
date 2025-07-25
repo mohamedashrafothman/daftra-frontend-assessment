@@ -23,7 +23,7 @@ export const vars: varsTypes = {
 		name: process.env.NEXT_PUBLIC_NAME || "",
 	},
 	api: { headers: { Accept: "application/json", "Content-Type": "application/json" } },
-	pagination: { limit: 10 },
+	pagination: { limit: 12 },
 };
 
 export default vars;

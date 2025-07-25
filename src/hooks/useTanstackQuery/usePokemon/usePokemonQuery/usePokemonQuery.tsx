@@ -8,11 +8,15 @@ import {
 	type GetPokemonDataType,
 	type GetPokemonResponseType,
 } from "services/api/pokeapi/pokemon";
+import vars from "utils/vars";
 
-const usePokemonQuery = (query: GetPokemonDataType | undefined) =>
+const usePokemonQuery = (query: Pick<GetPokemonDataType, "offset"> = {}) =>
 	useQuery<Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"], AxiosErrorProps>({
 		queryKey: [...ALL_KEY_ARRAY, { ...(query || {}) }],
-		queryFn: () => queryFn({ params: query || {} }).then(({ data }) => data),
+		queryFn: () =>
+			queryFn({ params: { ...query, limit: vars.pagination.limit } }).then(
+				({ data }) => data
+			),
 	});
 
 export default usePokemonQuery;

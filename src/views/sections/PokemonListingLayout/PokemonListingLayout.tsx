@@ -20,11 +20,11 @@ const PokemonListingLayout = ({ children, message = "Discover and explore Poké
 				</div>
 				<div className="col-auto">
 					<Nav className="nav-fill nav-pills" role="menubar">
-						<Nav.List className="gap-4">
+						<Nav.List className="gap-3">
 							<Nav.ListItem>
 								<Nav.Link
 									href="/pokemon"
-									className="text-capitalize"
+									className="text-capitalize rounded"
 									title="Page Controls"
 									exact>
 									page controls
@@ -33,7 +33,7 @@ const PokemonListingLayout = ({ children, message = "Discover and explore Poké
 							<Nav.ListItem>
 								<Nav.Link
 									href="/pokemon/infinity"
-									className="text-capitalize"
+									className="text-capitalize rounded"
 									title="Infinity Scroll"
 									exact>
 									infinity scroll

@@ -3,11 +3,11 @@
 import classNames from "classnames";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { ComponentPropsWithoutRef, forwardRef, Ref } from "react";
+import { ComponentPropsWithRef, forwardRef, Ref } from "react";
 import type { UrlObject } from "url";
 
 export const ACTIVE_CLASS = "active" as const;
-export type Props = { exact?: boolean | undefined } & LinkProps & ComponentPropsWithoutRef<"a">;
+export type Props = { exact?: boolean | undefined } & LinkProps & ComponentPropsWithRef<"a">;
 
 const NextLink = (
 	{ children, className = "", href, exact, ...props }: Props,

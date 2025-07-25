@@ -19,7 +19,6 @@ const usePokemonInfinityQuery = () =>
 					offset: ((pageParam as number) - 1) * vars.pagination.limit,
 				},
 			}).then(({ data }) => data),
-		initialPageParam: 1,
 		getNextPageParam: (lastPage) => {
 			if (!lastPage?.next) return;
 
@@ -34,6 +33,7 @@ const usePokemonInfinityQuery = () =>
 			const offset = parseInt(url.searchParams.get("offset") || "0", 10);
 			return offset / vars.pagination.limit + 1;
 		},
+		initialPageParam: 1,
 	});
 
 export default usePokemonInfinityQuery;

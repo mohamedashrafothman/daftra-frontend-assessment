@@ -23,7 +23,9 @@ $width-values: (
 	100: 100%,
 	auto: auto,
 	fit-content: fit-content,
+	"16px": 16px,
 	"18px": 18px,
+	"22px": 22px,
 	"24px": 24px,
 );
 $height-values: map-merge($width-values, ());
