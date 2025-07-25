@@ -4,8 +4,6 @@ export type varsTypes = {
 	isProduction: boolean;
 	isDevelopment: boolean;
 	app: {
-		protocol: string;
-		host: string;
 		baseUrl: string;
 		name: string;
 	};
@@ -17,8 +15,6 @@ export const vars: varsTypes = {
 	isProduction: process.env.NODE_ENV === "production",
 	isDevelopment: process.env.NODE_ENV === "development",
 	app: {
-		protocol: process.env.NEXT_PUBLIC_PROTOCOL || "",
-		host: process.env.NEXT_PUBLIC_HOST || "",
 		baseUrl: `${process.env.NEXT_PUBLIC_API_URL || ""}/api`,
 		name: process.env.NEXT_PUBLIC_NAME || "",
 	},
