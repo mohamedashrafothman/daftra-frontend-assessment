@@ -35,8 +35,8 @@
 	},
 	"homepage": "https://github.com/mohamedashrafothman/daftra-frontend-assessment#readme",
 	"dependencies": {
-		"@tanstack/react-query-devtools": "5.62.8",
 		"@tanstack/react-query": "5.62.7",
+		"@tanstack/react-query-devtools": "5.62.8",
 		"await-to-js": "3.0.0",
 		"axios": "1.7.9",
 		"bootstrap": "5.3.3",
@@ -44,9 +44,9 @@
 		"http-status": "2.1.0",
 		"next": "14.2.20",
 		"nextjs-toploader": "3.7.15",
+		"react": "18",
 		"react-dom": "18",
-		"react-toastify": "11.0.5",
-		"react": "18"
+		"react-toastify": "11.0.5"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "19.6.0",

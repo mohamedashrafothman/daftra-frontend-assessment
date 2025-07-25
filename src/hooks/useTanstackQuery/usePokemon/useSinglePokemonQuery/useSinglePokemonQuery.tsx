@@ -8,11 +8,14 @@ import {
 	type GetSinglePokemonResponseType,
 } from "services/api/pokeapi/pokemon";
 
-const useSinglePokemonsQuery = (id: string) =>
+const useSinglePokemonQuery = (id?: string | undefined) =>
 	useQuery<GetSinglePokemonResponseType, AxiosErrorProps>({
 		queryKey: [...SINGLE_KEY_ARRAY, id],
-		queryFn: () => queryFn({ variables: { id } }).then(({ data }) => data),
-		enabled: !!id,
+		queryFn:
+			id !== undefined
+				? () => queryFn({ variables: { id } }).then(({ data }) => data)
+				: undefined,
+		enabled: id !== undefined,
 	});
 
-export default useSinglePokemonsQuery;
+export default useSinglePokemonQuery;
