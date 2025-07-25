@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ReactNode } from "react";
 import "stylesheets/styles.scss";
+import vars from "utils/vars";
 import Providers from "views/providers";
 import SVGs from "views/sections/SVGs/SVGs";
 
@@ -15,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: { default: "Pokedex", template: "%s | Pokedex" },
+	title: { default: vars.app.name, template: `%s | ${vars.app.name}` },
 	description: "Description example...",
 };
 
