@@ -5,6 +5,7 @@ import NextTopLoader from "nextjs-toploader";
 import { ReactNode } from "react";
 import { Slide, ToastContainer } from "react-toastify";
 import { default as AxiosProvider } from "views/providers/Axios";
+import { default as NuqsProvider } from "views/providers/Nuqs";
 import { default as ReactQueryProvider } from "views/providers/ReactQuery";
 
 type Props = {
@@ -26,7 +27,7 @@ const Providers = ({ children, hydrationBoundaryState }: Props) => (
 				hideProgressBar
 				closeOnClick
 			/>
-			{children}
+			<NuqsProvider>{children}</NuqsProvider>
 		</AxiosProvider>
 	</ReactQueryProvider>
 );
