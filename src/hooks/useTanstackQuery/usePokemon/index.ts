@@ -14,7 +14,7 @@ export const ALL_KEY_ARRAY = ["pokemon"] as const;
 export const INFINITY_KEY_ARRAY = [...ALL_KEY_ARRAY, "infinity"] as const;
 export const SINGLE_KEY_ARRAY = [...ALL_KEY_ARRAY, "single"] as const;
 
-export const getSinglePokemonQuery = (id?: string | undefined) => ({
+export const getSinglePokemonQueryOptions = (id?: string | undefined) => ({
 	queryKey: [...SINGLE_KEY_ARRAY, id],
 	queryFn:
 		id !== undefined
