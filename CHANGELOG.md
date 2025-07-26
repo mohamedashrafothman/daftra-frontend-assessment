@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/mohamedashrafothman/daftra-frontend-assessment/compare/v1.0.0...v1.0.3) (2025-07-26)
+
+
+### Other
+
+* **release:** 1.0.1 ([d4f2c12](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/d4f2c12f01531f6dceed1cb91d53b51cea8c15bb))
+* **release:** 1.0.2 ([b7d028e](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/b7d028e8b57511ff31dd3c4d3faa7a9d2dfe3a40))
+
+
+### Changed
+
+* centralize tanstack custom hooks options ([5a9153e](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/5a9153e962dbd5ab05454db2a8449f0eb81269be))
+
 ### [1.0.2](https://github.com/mohamedashrafothman/daftra-frontend-assessment/compare/v1.0.0...v1.0.2) (2025-07-25)
 
 
