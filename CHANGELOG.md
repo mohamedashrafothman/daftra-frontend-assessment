@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/mohamedashrafothman/daftra-frontend-assessment/compare/v1.0.0...v1.0.5) (2025-07-26)
+
+
+### Features
+
+* added prefetch query on ssr pages ([edec02c](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/edec02c5c4ec80fe487d34ac84d587a359344a8d))
+
+
+### Other
+
+* **release:** 1.0.1 ([d4f2c12](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/d4f2c12f01531f6dceed1cb91d53b51cea8c15bb))
+* **release:** 1.0.2 ([b7d028e](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/b7d028e8b57511ff31dd3c4d3faa7a9d2dfe3a40))
+* **release:** 1.0.3 ([04db7eb](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/04db7eb028df8562f34339a5da95a73af1953fcb))
+* **release:** 1.0.4 ([69afa4c](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/69afa4cb87400ce853e2c208897a2d3358149136))
+
+
+### Changed
+
+* centralize tanstack custom hooks options ([5a9153e](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/5a9153e962dbd5ab05454db2a8449f0eb81269be))
+* tanstack query config ([cb415e4](https://github.com/mohamedashrafothman/daftra-frontend-assessment/commit/cb415e4d623f31313b4fd75563f4f61763066aca))
+
 ### [1.0.4](https://github.com/mohamedashrafothman/daftra-frontend-assessment/compare/v1.0.0...v1.0.4) (2025-07-26)
 
 
