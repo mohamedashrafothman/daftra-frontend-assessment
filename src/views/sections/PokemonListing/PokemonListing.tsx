@@ -1,7 +1,7 @@
 "use client";
 
 import { usePokemonQuery } from "hooks/useTanstackQuery/usePokemon";
-import { useState } from "react";
+import { parseAsInteger, useQueryState } from "nuqs";
 import { extractIdFromUrl } from "utils/helpers";
 import vars from "utils/vars";
 import Pagination from "views/components/Pagination";
@@ -9,11 +9,11 @@ import PokemonCard from "views/components/PokemonCard";
 
 const PokemonInfinityListing = () => {
 	// state hooks
-	const [currentPage, setCurrentPage] = useState(1);
+	const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
 
 	// server state hooks
 	const { data: pokemonData, isLoading } = usePokemonQuery({
-		offset: (currentPage - 1) * vars.pagination.limit,
+		offset: (page - 1) * vars.pagination.limit,
 	});
 
 	// constants
@@ -53,11 +53,11 @@ const PokemonInfinityListing = () => {
 			{pokemonList.length > 0 && totalPages > 1 && (
 				<div className="col-auto">
 					<Pagination
-						page={currentPage}
+						page={page}
 						totalPages={totalPages}
 						hasNextPage={hasNextPage}
 						hasPreviousPage={hasPrevPage}
-						onClick={(page) => setCurrentPage(+page)}
+						onClick={(page) => setPage(+page)}
 						disabled={isLoading}
 					/>
 				</div>
