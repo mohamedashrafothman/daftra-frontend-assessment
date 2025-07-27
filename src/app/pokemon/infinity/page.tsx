@@ -21,8 +21,11 @@ const page = async () => {
 	);
 
 	// prefetch pokemon details
-	[...(dataList || [])].forEach((pokemon) =>
-		queryClient.prefetchQuery(getSinglePokemonQueryOptions(extractIdFromUrl(pokemon.url)))
+	[...(dataList || [])].forEach(
+		async (pokemon) =>
+			await queryClient.prefetchQuery(
+				getSinglePokemonQueryOptions(extractIdFromUrl(pokemon.url))
+			)
 	);
 
 	return (

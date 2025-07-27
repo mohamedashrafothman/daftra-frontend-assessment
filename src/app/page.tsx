@@ -4,7 +4,7 @@ import {
 	getPokemonQueryOptions,
 	getSinglePokemonQueryOptions,
 } from "hooks/useTanstackQuery/usePokemon";
-import { GetPokemonResponseType } from "services/api/pokeapi/pokemon";
+import { type GetPokemonResponseType } from "services/api/pokeapi/pokemon";
 import { extractIdFromUrl } from "utils/helpers";
 import vars from "utils/vars";
 import Main from "views/sections/Main";
@@ -26,8 +26,11 @@ const page = async ({ searchParams }: Props) => {
 		{};
 
 	// prefetch pokemon details
-	[...(prefetchedData?.results || [])].forEach((pokemon) =>
-		queryClient.prefetchQuery(getSinglePokemonQueryOptions(extractIdFromUrl(pokemon.url)))
+	[...(prefetchedData?.results || [])].forEach(
+		async (pokemon) =>
+			await queryClient.prefetchQuery(
+				getSinglePokemonQueryOptions(extractIdFromUrl(pokemon.url))
+			)
 	);
 
 	return (

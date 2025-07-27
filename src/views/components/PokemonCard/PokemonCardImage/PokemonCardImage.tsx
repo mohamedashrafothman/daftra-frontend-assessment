@@ -10,7 +10,7 @@ const PokemonCardImage = (props: Props) => (
 	<div className="card-header border-0">
 		<div className="ratio ratio-41x29 text-bg-light rounded">
 			{props.isLoading ? (
-				<div className="placeholder bg-secondary rounded w-100 h-100">&nbsp;</div>
+				<div className="placeholder bg-secondary w-100 h-100 rounded">&nbsp;</div>
 			) : (
 				<Image
 					src={props?.imageUrl || ""}

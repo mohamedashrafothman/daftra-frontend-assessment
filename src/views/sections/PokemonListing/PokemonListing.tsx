@@ -1,7 +1,14 @@
 "use client";
 
-import { usePokemonQuery } from "hooks/useTanstackQuery/usePokemon";
+import queryClient from "config/tanstack-query";
+import {
+	getPokemonQueryOptions,
+	getSinglePokemonQueryOptions,
+	usePokemonQuery,
+} from "hooks/useTanstackQuery/usePokemon";
 import { parseAsInteger, useQueryState } from "nuqs";
+import { useCallback, useEffect } from "react";
+import { type GetPokemonResponseType } from "services/api/pokeapi/pokemon";
 import { extractIdFromUrl } from "utils/helpers";
 import vars from "utils/vars";
 import Pagination from "views/components/Pagination";
@@ -22,6 +29,30 @@ const PokemonInfinityListing = () => {
 	const pokemonList = pokemonData?.results || [];
 	const totalItems = pokemonData?.count || 0;
 	const totalPages = Math.ceil(totalItems / vars.pagination.limit) || 1;
+
+	// event handlers
+	const prefetchDataOnPageChange = useCallback(async () => {
+		if (!hasNextPage) return;
+
+		const getPokemonOptions = getPokemonQueryOptions({ offset: page * vars.pagination.limit });
+		await queryClient.prefetchQuery(getPokemonOptions);
+		const prefetchedData =
+			(queryClient.getQueryState(getPokemonOptions.queryKey)
+				?.data as GetPokemonResponseType) || {};
+
+		// prefetch pokemon details
+		[...(prefetchedData?.results || [])].forEach(
+			async (pokemon) =>
+				await queryClient.prefetchQuery(
+					getSinglePokemonQueryOptions(extractIdFromUrl(pokemon.url))
+				)
+		);
+	}, [page, hasNextPage]);
+
+	// effect handlers
+	useEffect(() => {
+		prefetchDataOnPageChange();
+	}, [prefetchDataOnPageChange]);
 
 	return (
 		<div className="row gy-5 justify-content-center mt-0">

@@ -1,6 +1,6 @@
 "use client";
 
-import useSinglePokemonQuery from "hooks/useTanstackQuery/usePokemon/useSinglePokemonQuery";
+import { useSinglePokemonQuery } from "hooks/useTanstackQuery/usePokemon";
 import { useParams, useRouter } from "next/navigation";
 import PokemonSingleCard from "views/components/PokemonSingleCard";
 
