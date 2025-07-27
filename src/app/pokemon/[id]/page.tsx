@@ -6,9 +6,9 @@ import PokemonSingle from "views/sections/PokemonSingle";
 
 type Props = { params: { id: string } };
 
-const page = ({ params: { id } }: Props) => {
+const page = async ({ params: { id } }: Props) => {
 	// prefetch pokemon details
-	queryClient.prefetchQuery(getSinglePokemonQueryOptions(id));
+	await queryClient.prefetchQuery(getSinglePokemonQueryOptions(id));
 
 	return (
 		<Main className="main-single">

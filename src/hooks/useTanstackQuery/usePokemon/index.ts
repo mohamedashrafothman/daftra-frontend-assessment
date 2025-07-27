@@ -1,60 +1,72 @@
-import { QueryFunctionContext } from "@tanstack/react-query";
+import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
+import type { AxiosErrorProps, AxiosResponseProps } from "config/axios";
 import {
 	getPokemon,
+	getSinglePokemon,
 	type GetPokemonDataType,
 	type GetPokemonResponseType,
-	getSinglePokemon,
+	type GetSinglePokemonResponseType,
 } from "services/api/pokeapi/pokemon";
 import vars from "utils/vars";
 import usePokemonInfinityQuery from "./usePokemonInfinityQuery";
 import usePokemonQuery from "./usePokemonQuery";
 import useSinglePokemonQuery from "./useSinglePokemonQuery";
 
-export const ALL_KEY_ARRAY = ["pokemon"] as const;
-export const INFINITY_KEY_ARRAY = [...ALL_KEY_ARRAY, "infinity"] as const;
-export const SINGLE_KEY_ARRAY = [...ALL_KEY_ARRAY, "single"] as const;
+export const keyFactory = {
+	all: () => ["pokemon"] as const,
+	list: (query: Partial<GetPokemonDataType> = {}) =>
+		[...keyFactory.all(), "list", query] as const,
+	infinity: () => [...keyFactory.all(), "infinity"] as const,
+	single: (id: string) => [...keyFactory.all(), "single", { id }] as const,
+};
 
-export const getSinglePokemonQueryOptions = (id?: string | undefined) => ({
-	queryKey: [...SINGLE_KEY_ARRAY, id],
-	queryFn:
-		id !== undefined
+const getOffsetFromUrl = (url: string | null): number | undefined => {
+	if (!url) return;
+	const parsed = new URL(url);
+	const offset = parseInt(parsed.searchParams.get("offset") || "0", 10);
+	return offset / vars.pagination.limit + 1;
+};
+
+export const getSinglePokemonQueryOptions = (id?: string | undefined) =>
+	queryOptions<GetSinglePokemonResponseType, AxiosErrorProps>({
+		queryKey: keyFactory.single(id || ""),
+		queryFn: id
 			? () => getSinglePokemon({ variables: { id } }).then(({ data }) => data)
 			: undefined,
-	enabled: id !== undefined,
-});
+		enabled: !!id,
+	});
+
 export const getPokemonQueryOptions = (
 	query: Pick<GetPokemonDataType, "offset">,
 	options?: object | undefined
-) => ({
-	queryKey: [...ALL_KEY_ARRAY, { ...(query || {}) }],
-	queryFn: () =>
-		getPokemon({ params: { ...query, limit: vars.pagination.limit } }).then(({ data }) => data),
-	...(options || {}),
-});
-export const getPokemonInfinityQueryOptions = () => ({
-	queryKey: INFINITY_KEY_ARRAY,
-	queryFn: ({ pageParam = 1 }: QueryFunctionContext) =>
-		getPokemon({
-			params: {
-				limit: vars.pagination.limit,
-				offset: ((pageParam as number) - 1) * vars.pagination.limit,
-			},
-		}).then(({ data }) => data),
-	initialPageParam: 1,
-	getNextPageParam: (lastPage: GetPokemonResponseType) => {
-		if (!lastPage?.next) return;
+) =>
+	queryOptions<Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"], AxiosErrorProps>(
+		{
+			queryKey: keyFactory.list(query),
+			queryFn: () =>
+				getPokemon({ params: { ...query, limit: vars.pagination.limit } }).then(
+					({ data }) => data
+				),
+			...(options || {}),
+		}
+	);
 
-		const url = new URL(lastPage.next);
-		const offset = parseInt(url.searchParams.get("offset") || "0", 10);
-		return offset / vars.pagination.limit + 1;
-	},
-	getPreviousPageParam: (firstPage: GetPokemonResponseType) => {
-		if (!firstPage?.previous) return;
-
-		const url = new URL(firstPage.previous);
-		const offset = parseInt(url.searchParams.get("offset") || "0", 10);
-		return offset / vars.pagination.limit + 1;
-	},
-});
+export const getPokemonInfinityQueryOptions = () =>
+	infiniteQueryOptions<
+		Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"],
+		AxiosErrorProps
+	>({
+		queryKey: keyFactory.infinity(),
+		queryFn: ({ pageParam = 1 }) =>
+			getPokemon({
+				params: {
+					limit: vars.pagination.limit,
+					offset: ((pageParam as number) - 1) * vars.pagination.limit,
+				},
+			}).then(({ data }) => data),
+		initialPageParam: 1,
+		getNextPageParam: (lastPage) => getOffsetFromUrl(lastPage?.next),
+		getPreviousPageParam: (firstPage) => getOffsetFromUrl(firstPage?.previous),
+	});
 
 export { usePokemonInfinityQuery, usePokemonQuery, useSinglePokemonQuery };

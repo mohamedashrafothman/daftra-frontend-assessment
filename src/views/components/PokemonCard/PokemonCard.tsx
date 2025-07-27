@@ -1,4 +1,4 @@
-import useSinglePokemonQuery from "hooks/useTanstackQuery/usePokemon/useSinglePokemonQuery";
+import { useSinglePokemonQuery } from "hooks/useTanstackQuery/usePokemon";
 import IPokemon from "interfaces/Pokemon.interface";
 import { ComponentPropsWithoutRef, memo } from "react";
 import PokemonCardBody from "./PokemonCardBody";

@@ -8,7 +8,7 @@ type Props = { isLoading?: boolean | undefined } & Pick<IPokemon, "id" | "name">
 const PokemonCardTitle = (props: Props) => (
 	<h5 className="card-title h6 mb-0">
 		{props.isLoading ? (
-			<div className="placeholder bg-secondary w-75 mx-auto">&nbsp;</div>
+			<span className="placeholder bg-secondary w-75 mx-auto d-inline-block">&nbsp;</span>
 		) : (
 			<NextLink
 				href={`/pokemon/${props.id}`}
