@@ -3,6 +3,7 @@
 import { ComponentPropsWithoutRef } from "react";
 import vars from "utils/vars";
 import Nav from "views/components/Nav";
+import NextLink from "views/components/NextLink";
 
 type Props = { message?: string | undefined } & ComponentPropsWithoutRef<"section">;
 
@@ -11,11 +12,15 @@ const PokemonListingLayout = ({ children, message = "Discover and explore Poké
 		<div className="container">
 			<div className="row gy-3 justify-content-center">
 				<div className="col-12">
-					<h1 className="text-capitalize hstack gap-2 flex-nowrap justify-content-center align-items-center mb-0">
-						<svg className="bi text-yellow w-24px h-24px" width="16" height="16">
-							<use href="#icon-lightning" />
-						</svg>
-						{vars.app.name}
+					<h1 className="text-capitalize mb-0">
+						<NextLink
+							href="/"
+							className="link-dark link-offset-1 link-underline-opacity-0 link-underline-opacity-75-hover hstack gap-2 flex-nowrap justify-content-center align-items-center w-fit-content mx-auto">
+							<svg className="bi text-yellow w-24px h-24px" width="16" height="16">
+								<use href="#icon-lightning" />
+							</svg>
+							{vars.app.name}
+						</NextLink>
 					</h1>
 					{message && <p className="lead m-0">{message}</p>}
 				</div>

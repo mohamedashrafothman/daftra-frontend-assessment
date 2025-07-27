@@ -6,9 +6,8 @@ import { getPokemonInfinityQueryOptions } from "hooks/useTanstackQuery/usePokemo
 import { type GetPokemonResponseType } from "services/api/pokeapi/pokemon";
 
 const usePokemonInfinityQuery = () =>
-	useInfiniteQuery<
-		Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"],
-		AxiosErrorProps
-	>(getPokemonInfinityQueryOptions());
+	useInfiniteQuery<AxiosResponseProps<GetPokemonResponseType>["data"], AxiosErrorProps>(
+		getPokemonInfinityQueryOptions()
+	);
 
 export default usePokemonInfinityQuery;
