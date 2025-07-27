@@ -1,4 +1,4 @@
-import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
+import { infiniteQueryOptions, queryOptions, UseQueryOptions } from "@tanstack/react-query";
 import type { AxiosErrorProps, AxiosResponseProps } from "config/axios";
 import {
 	getPokemon,
@@ -28,7 +28,7 @@ const getOffsetFromUrl = (url: string | null): number | undefined => {
 };
 
 export const getSinglePokemonQueryOptions = (id?: string | undefined) =>
-	queryOptions<GetSinglePokemonResponseType, AxiosErrorProps>({
+	queryOptions<AxiosResponseProps<GetSinglePokemonResponseType>["data"], AxiosErrorProps>({
 		queryKey: keyFactory.single(id || ""),
 		queryFn: id
 			? () => getSinglePokemon({ variables: { id } }).then(({ data }) => data)
@@ -38,24 +38,22 @@ export const getSinglePokemonQueryOptions = (id?: string | undefined) =>
 
 export const getPokemonQueryOptions = (
 	query: Pick<GetPokemonDataType, "offset">,
-	options?: object | undefined
+	options?: Omit<
+		UseQueryOptions<AxiosResponseProps<GetPokemonResponseType>["data"], AxiosErrorProps>,
+		"queryFn" | "queryKey"
+	>
 ) =>
-	queryOptions<Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"], AxiosErrorProps>(
-		{
-			queryKey: keyFactory.list(query),
-			queryFn: () =>
-				getPokemon({ params: { ...query, limit: vars.pagination.limit } }).then(
-					({ data }) => data
-				),
-			...(options || {}),
-		}
-	);
+	queryOptions<AxiosResponseProps<GetPokemonResponseType>["data"], AxiosErrorProps>({
+		...(options || {}),
+		queryKey: keyFactory.list(query),
+		queryFn: () =>
+			getPokemon({ params: { ...query, limit: vars.pagination.limit } }).then(
+				({ data }) => data
+			),
+	});
 
 export const getPokemonInfinityQueryOptions = () =>
-	infiniteQueryOptions<
-		Pick<AxiosResponseProps<GetPokemonResponseType>, "data">["data"],
-		AxiosErrorProps
-	>({
+	infiniteQueryOptions<AxiosResponseProps<GetPokemonResponseType>["data"], AxiosErrorProps>({
 		queryKey: keyFactory.infinity(),
 		queryFn: ({ pageParam = 1 }) =>
 			getPokemon({
